@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Input Form with Advanced Layout</title>
+    <!-- Tailwind CSS CDN for basic styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom styles for Inter font and general layout */
+        body {
+            font-family: "Inter", sans-serif;
+            background-color: #f3f4f6; /* Light gray background */
+            display: flex;
+            justify-content: center;
+            align-items: flex-start; /* Align to start to prevent content from being too centered vertically on short pages */
+            min-height: 100vh; /* Minimum height of the viewport */
+            padding: 2rem; /* Padding around the content */
+            box-sizing: border-box; /* Include padding in element's total width and height */
+        }
+        .main-wrapper {
+            max-width: 1200px; /* Increased max width for a more complex layout */
+            width: 100%;
+        }
+        .section-card {
+            background-color: #ffffff;
+            padding: 2.5rem; /* Increased padding */
+            border-radius: 1rem; /* More rounded corners */
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); /* Stronger shadow */
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out; /* Transition for hover effect */
+        }
+        .section-card:hover {
+            transform: translateY(-5px); /* Lift effect on hover */
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04); /* Enhanced shadow on hover */
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: #374151; /* Darker text for labels */
+        }
+        .form-group input[type="text"],
+        .form-group input[type="email"],
+        .form-group textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #d1d5db; /* Light gray border */
+            border-radius: 0.5rem; /* Rounded corners */
+            box-sizing: border-box; /* Include padding in width */
+            font-size: 1rem;
+            color: #1f2937; /* Dark text for input */
+            background-color: #ffffff; /* White background for input */
+            transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out; /* Transition for input focus */
+        }
+        .form-group input[type="text"]:focus,
+        .form-group input[type="email"]:focus,
+        .form-group textarea:focus {
+            border-color: #6366f1; /* Indigo 500 on focus */
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2); /* Ring shadow on focus */
+            outline: none; /* Remove default outline */
+        }
+        .form-group textarea {
+            min-height: 120px; /* Increased minimum height for textarea */
+            resize: vertical; /* Allow vertical resizing */
+        }
+        .form-group input[type="checkbox"] {
+            margin-right: 0.5rem;
+        }
+        .btn-primary {
+            background-color: #4f46e5; /* Indigo 600 */
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s ease-in-out, transform 0.1s ease-in-out; /* Transitions for button */
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); /* Subtle shadow */
+        }
+        .btn-primary:hover {
+            background-color: #4338ca; /* Indigo 700 on hover */
+            transform: translateY(-2px); /* Slight lift on hover */
+        }
+        .btn-primary:active {
+            transform: translateY(0); /* Press effect */
+        }
+        .message-box {
+            background-color: #d1fae5; /* Light green for success */
+            color: #065f46; /* Dark green text */
+            padding: 1rem;
+            border-radius: 0.5rem;
+            margin-bottom: 1.5rem;
+            font-weight: 500;
+            border: 1px solid #6ee7b7; /* Green border */
+        }
+        /* Style for displaying submitted data */
+        .submitted-data {
+            background-color: #e0f2fe; /* Light blue */
+            color: #0c4a6e; /* Dark blue text */
+            padding: 1.5rem;
+            border-radius: 0.75rem;
+            margin-top: 2rem;
+            border: 1px solid #93c5fd; /* Blue border */
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        .submitted-data h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: #1e40af; /* Darker blue for heading */
+        }
+        .submitted-data p {
+            margin-bottom: 0.5rem;
+            font-size: 1rem;
+        }
+        .submitted-data p strong {
+            color: #1c3c7a; /* Even darker blue for strong text */
+        }
+    </style>
+</head>
+<body class="bg-gray-100 flex items-center justify-center min-h-screen p-4">
+    <div class="main-wrapper flex flex-col lg:flex-row gap-8">
+
+        <!-- Left Section: About Our Service -->
+        <section class="section-card lg:w-1/2">
+            <h2 class="text-3xl font-bold text-gray-800 mb-6 text-center">About Our Service</h2>
+            <p class="text-gray-700 leading-relaxed mb-4">
+                Welcome to our interactive feedback platform! We are dedicated to providing high-quality services and constantly improving based on your valuable input. Our mission is to create a seamless and user-friendly experience for everyone.
+            </p>
+            <p class="text-gray-700 leading-relaxed mb-4">
+                This platform is designed to gather your thoughts, suggestions, and any issues you might encounter. Your feedback helps us understand your needs better and allows us to tailor our services to exceed your expectations. We appreciate you taking the time to share your perspective.
+            </p>
+            <h3 class="text-xl font-semibold text-gray-800 mb-3">Key Features:</h3>
+            <ul class="list-disc list-inside text-gray-600 space-y-2">
+                <li>Easy-to-use form interface.</li>
+                <li>Secure submission of your data.</li>
+                <li>Real-time display of submitted information.</li>
+                <li>Responsive design for all devices (mobile, tablet, desktop).</li>
+                <li>Continuous improvements based on user feedback.</li>
+            </ul>
+        </section>
+
+        <!-- Right Section: User Feedback Form -->
+        <section class="section-card lg:w-1/2">
+            <h1 class="text-3xl font-bold text-gray-800 mb-6 text-center">User Feedback Form</h1>
+
+            <!-- Display message if available -->
+            <% if (message) { %>
+                <div class="message-box mb-6">
+                    <%= message %>
+                </div>
+            <% } %>
+
+            <!-- User Input Form -->
+            <form action="/submit-form" method="POST" class="space-y-6">
+                <div class="form-group">
+                    <label for="name" class="block text-sm font-medium text-gray-700">Name:</label>
+                    <input type="text" id="name" name="name" placeholder="Your Full Name" required
+                           class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm p-3">
+                </div>
+
+                <div class="form-group">
+                    <label for="email" class="block text-sm font-medium text-gray-700">Email:</label>
+                    <input type="email" id="email" name="email" placeholder="your.email@example.com" required
+                           class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm p-3">
+                </div>
+
+                <div class="form-group">
+                    <label for="message" class="block text-sm font-medium text-gray-700">Message:</label>
+                    <textarea id="message" name="message" rows="5" placeholder="Enter your message or feedback here..." required
+                              class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm p-3"></textarea>
+                </div>
+
+                <div class="flex items-center">
+                    <input type="checkbox" id="subscribe" name="subscribe"
+                           class="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded">
+                    <label for="subscribe" class="ml-2 block text-sm text-gray-900">Subscribe to newsletter</label>
+                </div>
+
+                <div class="flex justify-center">
+                    <button type="submit"
+                            class="btn-primary flex justify-center py-3 px-6 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                        Submit Feedback
+                    </button>
+                </div>
+            </form>
+
+            <!-- Display Submitted Data (conditionally rendered by EJS) -->
+            <% if (formData) { %>
+                <div class="submitted-data mt-8 p-6 bg-blue-50 rounded-lg shadow-inner">
+                    <h3 class="text-2xl font-semibold text-blue-800 mb-4">Submitted Information:</h3>
+                    <p class="text-blue-700"><strong>Name:</strong> <%= formData.name %></p>
+                    <p class="text-blue-700"><strong>Email:</strong> <%= formData.email %></p>
+                    <p class="text-blue-700"><strong>Message:</strong> <%= formData.message %></p>
+                    <p class="text-blue-700"><strong>Subscribed:</strong> <%= formData.subscribe ? 'Yes' : 'No' %></p>
+                </div>
+            <% } %>
+        </section>
+    </div>
+</body>
+</html>
